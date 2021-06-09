@@ -1,0 +1,87 @@
+<apex:page controller="CustomControllerCandidate">
+    <div style="text-align:center;"> <apex:image value="{!$Resource.EnzigmaLogo }" /></div>
+    <h2>
+        Job Wizard
+    </h2>
+    <h1><u> Candidate Information</u></h1>
+    <br/>
+    <h4>Step - 2 </h4>
+    <script>
+    function alerts(){
+        if((document.getElementById('{!$Component.frm.pb.pbs.sal}').value=='')){
+            alert('please enter salutation');
+            return false;
+        }
+        if((document.getElementById('{!$Component.frm.pb.pbs.fname}').value=='')){
+            alert('please enter first name');
+            return false;
+        }
+        if((document.getElementById('{!$Component.frm.pb.pbs.lname}').value=='')){
+            alert('please enter last name');
+            return false;
+        }
+        if((document.getElementById('{!$Component.frm.pb.pbs.dob}').value=='')){
+            alert('please enter date of birth');
+            return false;
+            
+        }
+        if((document.getElementById('{!$Component.frm.pb.pbs.exSal}').value=='')){
+            alert('please enter expected ');
+            return false;
+        }
+        if((document.getElementById('{!$Component.frm.pb.pbs1.jobs}').value=='')){
+            alert('please enter date of jobs');
+            return false;
+        }
+        
+    }
+    </script>
+    
+    <apex:form id="frm">
+        <apex:pageBlock title="Enter Candidate Data:" id="pb">
+            <apex:pageBlockSection columns="2" id="pbs">
+                <apex:inputField value="{!candidate1.APEX_Salutation__c}" id="sal"/>  
+                <apex:inputField value="{!candidate1.APEX_FirstName__c}" id="fname"/>
+                <apex:inputField value="{!candidate1.APEX_LastName__c}" id="lname"/>
+                <!-- <apex:inputField value="{!candidate1.APEX_FullName__c}" id="fullname"/>-->
+                <apex:inputField value="{!candidate1.APEX_DateOFBirth__c}" id="dob"/>
+                <apex:inputField value="{!candidate1.APEX_ExpectedSalary__c}" id="exSal"/>
+                <apex:inputField value="{!candidate1.APEX_JOB_Shwetajob__c}" id="jobs"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock> 
+        <apex:commandButton action="{!Save}" value="Save" onclick="return alerts()"/>
+        
+        <apex:commandButton action="{!updateMe}" value="Update"/>
+        
+        
+    </apex:form>
+</apex:page>
+<!--<apex:form >
+
+<apex:pageBlock title="Welcome {!$User.FirstName}" id="pb">
+
+<apex:pageBlockButtons >
+<apex:commandButton action="{!saveMe}" value="Save" onClick="helloWorld()"/>
+
+<apex:commandButton action="{!updateMe}" value="Update"/>
+</apex:pageBlockButtons>
+
+
+<apex:pageBlockSection title="Enter Candidate Data:" columns="2" id="pbs">
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_Salutation__c}" id="sal"/>  
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_FirstName__c}" id="fname"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_LastName__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_FullName__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_DateOFBirth__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_ApplicationDate__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_Email__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.Country__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_State__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_ExpectedSalary__c}"/>
+<apex:inputField styleClass="asideText" value="{!candidate1.APEX_JOB_Shwetajob__c}"/>
+
+</apex:pageBlockSection>
+
+</apex:pageBlock>       
+</apex:form>
+</apex:page>-->

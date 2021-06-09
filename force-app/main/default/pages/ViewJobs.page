@@ -1,0 +1,32 @@
+<!--<apex:page controller="allJobs">
+<apex:pageBlock >
+    <apex:pageBlockSection title="Details" collapsible="false"> 
+    <apex:pageBlockTable value="{!opportunities}" var="opp">
+    <apex:column value="{!opp.APEX_Name__c}"/>
+    <apex:column value="{!opp.APEX_NoOfPosition__c}"/>
+    <apex:column value="{!opp.APEX_JobPositins__c}"/>
+    <apex:column value="{!opp.APEX_Manager__c}"/>
+    </apex:pageBlockTable>
+    
+    
+    </apex:pageBlockSection>
+
+
+</apex:pageBlock>
+
+</apex:page>-->
+<apex:page controller="allJobs" >
+<apex:pageBlock >
+    <apex:pageBlockSection title="Job Details">
+    <apex:pageBlockTable value="{!jobObj}" var="obj">
+    <apex:column value="{!obj.APEX_Name__c}"/>
+    <apex:column value="{!obj.APEX_NoOfPosition__c}"/>
+    <apex:column value="{!obj.APEX_JobPositins__c}"/>
+    <apex:column value="{!obj.APEX_Manager__c}"/>
+    </apex:pageBlockTable>
+        
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+    <c:RelatedListComponent records="{!records}" fields="{!fields}"></c:RelatedListComponent>
+
+</apex:page>

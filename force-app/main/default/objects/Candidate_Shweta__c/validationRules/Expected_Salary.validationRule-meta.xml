@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_Salary</fullName>
+    <active>false</active>
+    <description>required expected salary</description>
+    <errorConditionFormula>ISNULL( APEX_ExpectedSalary__c )</errorConditionFormula>
+    <errorDisplayField>APEX_ExpectedSalary__c</errorDisplayField>
+    <errorMessage>EXPECTED Salary Missinggggggg</errorMessage>
+</ValidationRule>

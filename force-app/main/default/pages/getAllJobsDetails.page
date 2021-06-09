@@ -1,0 +1,18 @@
+<apex:page controller="getAllJobs">
+    <apex:pageBlock >
+        <apex:pageBlockSection title="Job Details"  >
+            <apex:pageBlockTable value="{!opportunities}" var="o" >
+            <apex:column value="{!o.APEX_Name__c}"/>
+            <apex:column value="{!o.APEX_NoOfPosition__c}"/>
+            <apex:column value="{!o.APEX_JobPositins__c}"/> 
+            <apex:column value="{!o.APEX_Manager__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>  
+    </apex:pageBlock>
+   
+    
+  
+   
+    
+  
+</apex:page>

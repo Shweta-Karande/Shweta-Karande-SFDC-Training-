@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APEX_HiredApplicant__c</fullName>
+    <externalId>false</externalId>
+    <label>HiredApplicant</label>
+    <summaryFilterItems>
+        <field>Candidate_Shweta__c.APEX_Status__c</field>
+        <operation>equals</operation>
+        <value>Hired</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Candidate_Shweta__c.APEX_JOB_Shwetajob__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

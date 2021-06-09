@@ -1,0 +1,40 @@
+<apex:component controller="getByJobNameExtraPrac">
+  
+   <apex:pageBlock >
+        <apex:pageBlockSection title="Related List">
+             <apex:repeat var="item" value="{!opportunities}">
+                    <tr>
+                        <td>Full Name</td>
+                        <td>Id</td>
+                        <td>Email</td>
+                    </tr>
+
+                    <td>{!item.Candidate_Shwetas__r[0].APEX_FullName__c}</td>
+                    <td>{!item.Candidate_Shwetas__r[0].id}</td>
+                    <td>{!item.Candidate_Shwetas__r[0].APEX_Email_c}</td>
+                 <tr>
+                        <td>Full Name</td>
+                        <td>Id</td>
+                        <td>Email</td>
+                    </tr>
+
+                    <td>{!item.Candidate_Shwetas__r[1].APEX_FullName__c}</td>
+                    <td>{!item.Candidate_Shwetas__r[1].id}</td>
+                    <td>{!item.Candidate_Shwetas__r[1].APEX_Email_c}</td>
+                 
+                 
+                 <tr>
+                        <td>Full Name</td>
+                        <td>Id</td>
+                        <td>Email</td>
+                    </tr>
+
+                  <td>{!item.Candidate_Shwetas__r[2].APEX_FullName__c}</td>
+                    <td>{!item.Candidate_Shwetas__r[2].id}</td>
+                    <td>{!item.Candidate_Shwetas__r[2].APEX_Email_c}</td>
+                    
+        </apex:repeat> 
+
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:component>

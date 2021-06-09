@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NotAllowedMrInFirstName</fullName>
+    <active>true</active>
+    <errorConditionFormula>$Setup.Validation_Handler__c.Candidate_Validation__c  &amp;&amp;  $ObjectType.Candidate_Shweta__c.Fields.APEX_FirstName__c!=&apos;Mr&apos;</errorConditionFormula>
+    <errorMessage>Mr Not Allowed In First Name</errorMessage>
+</ValidationRule>

@@ -1,0 +1,23 @@
+<apex:page StandardController="APEX_Job_Shweta__c">
+<apex:form >
+<apex:pageBlock title="Welcome">
+<apex:pageBlockButtons >
+<apex:commandButton action="{!save}" value="Save"/>
+<apex:commandButton action="{!edit}" value="Edit"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="Enter Job Data:" columns="1">
+ <apex:inputField value="{!APEX_Job_Shweta__c.APEX_Name__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_Description__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_NoOfPosition__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_ExpireOn__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_Active__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_SalaryOffered__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_Manager__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_JobPositins__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.APEX_RequiredSkills__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.QualificationRequired__c}"/>
+         <apex:inputField value="{!APEX_Job_Shweta__c.CerificationRequired__c}"/>
+</apex:pageBlockSection>
+</apex:pageBlock>       
+</apex:form>
+</apex:page>
