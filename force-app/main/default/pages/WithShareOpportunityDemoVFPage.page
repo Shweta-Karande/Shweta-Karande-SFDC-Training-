@@ -1,0 +1,3 @@
+<apex:page standardController="Opportunity" extensions="WithShareOpportunityDemo">
+Hello I am using {!ap.APEX_Manager__c} and a new one called {!apAnother.APEX_Manager__c}
+</apex:page>

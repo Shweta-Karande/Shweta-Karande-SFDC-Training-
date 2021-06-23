@@ -1,32 +1,124 @@
-<!--<apex:page controller="allJobs">
-<apex:pageBlock >
-    <apex:pageBlockSection title="Details" collapsible="false"> 
-    <apex:pageBlockTable value="{!opportunities}" var="opp">
-    <apex:column value="{!opp.APEX_Name__c}"/>
-    <apex:column value="{!opp.APEX_NoOfPosition__c}"/>
-    <apex:column value="{!opp.APEX_JobPositins__c}"/>
-    <apex:column value="{!opp.APEX_Manager__c}"/>
-    </apex:pageBlockTable>
-    
-    
-    </apex:pageBlockSection>
-
-
-</apex:pageBlock>
-
-</apex:page>-->
 <apex:page controller="allJobs" >
-<apex:pageBlock >
-    <apex:pageBlockSection title="Job Details">
-    <apex:pageBlockTable value="{!jobObj}" var="obj">
-    <apex:column value="{!obj.APEX_Name__c}"/>
-    <apex:column value="{!obj.APEX_NoOfPosition__c}"/>
-    <apex:column value="{!obj.APEX_JobPositins__c}"/>
-    <apex:column value="{!obj.APEX_Manager__c}"/>
-    </apex:pageBlockTable>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    </head>
+    <style>
+  h3 {
+  color: blue;
+  font-family: verdana;
+  font-size: 300%;
+   }
+  h4 {
+  color: Green;
+  font-family: verdana;
+  font-size: 300%;
+   }
+  .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+      <script type="text/javascript">
+        $(document).ready(function() {
+        $('#tdiv').hide();
+    });
+    $(document).ready(function(){
         
-    </apex:pageBlockSection>
+        $(".b1").click(function(){
+            $("#div").toggle();
+            
+        });
+    });
+    
+    
+    function getRemoteContact(){
+       var id= '{!$CurrentPage.parameters.id}';
+        alert(id);
+   var c;        
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.allJobs.increaseNoOfPosition}',id,
+            function(result, event){
+                if(event.status){
+                    
+              }
+                
+            },
+        {escape:true}
+        );
+	}
+    </script>
+     <Center><h3>All Jobs</h3></Center>
+    <Centre><button onclick="getRemoteContact()" class="button">Increase job Position +1 </button></Centre>
+    <Centre> <apex:pageBlock >
+        <apex:pageBlockSection title="Job Details">
+            <apex:pageBlockTable value="{!jobObj}" var="obj">
+                <apex:column value="{!obj.APEX_Name__c}"/>
+                <apex:column value="{!obj.APEX_NoOfPosition__c}"/>
+                <apex:column value="{!obj.APEX_JobPositins__c}"/>
+                <apex:column value="{!obj.APEX_Manager__c}"/>
+            </apex:pageBlockTable>
+         </apex:pageBlockSection>
     </apex:pageBlock>
+    </Centre>
     <c:RelatedListComponent records="{!records}" fields="{!fields}"></c:RelatedListComponent>
-
+    <Center><h4>Candidate</h4></Center>
+  <input type="button" value="Show New Candidate" class="b1" />
+    
+   <!--  <Centre><button onclick="getRemoteContact()" class="button">Increase job Position +1 </button></Centre>-->
+    
+    
+  <apex:pageBlock >
+        <apex:pageBlockSection title="Candidate" >
+            <apex:form title="New Candidate Form" >
+           		<div id="div">
+                   	<apex:pageBlockSection columns="3">
+                        <apex:inputField value="{!candidate1.APEX_Salutation__c}"/>  
+                        <apex:inputField value="{!candidate1.APEX_FirstName__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_LastName__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_FullName__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_DateOFBirth__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_ApplicationDate__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_Email__c}"/>
+                        <apex:inputField value="{!candidate1.Country__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_State__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_ExpectedSalary__c}"/>
+                        <apex:inputField value="{!candidate1.APEX_JOB_Shwetajob__c}"/>
+                    </apex:pageBlockSection>
+                 <apex:commandButton value="save" action="{!save}"/>
+                </div>
+          	</apex:form>
+        </apex:pageBlockSection>   
+    </apex:pageBlock>
+    
+    
+    <apex:form >
+        <div class="alert alert-danger" role="alert">
+            <apex:pageBlock >
+          <apex:commandButton value="Show Candidate List" action="{!ShowCandidateMethod}"/>
+                
+            </apex:pageBlock>
+            
+            <apex:pageBlock rendered="{!ShowCandidateListFlag}">
+                <apex:pageBlockSection title="Page Block Table">
+                    <apex:pageBlockTable value="{!accRec}" var="candidateVar" styleClass="table-primary">
+                       	<apex:column value="{!candidateVar.APEX_FullName__c}"/>  
+                        <apex:column value="{!candidateVar.APEX_ApplicationDate__c}"/>  
+                        <apex:column value="{!candidateVar.APEX_ExpectedSalary__c}"/>  
+                        <apex:column value="{!candidateVar.Country__c}"/> 
+                        <apex:column value="{!candidateVar.APEX_Email__c}"/>  
+                        <apex:column value="{!candidateVar.APEX_JOB_Shwetajob__c}"/>  
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+         </div>
+    </apex:form>
 </apex:page>

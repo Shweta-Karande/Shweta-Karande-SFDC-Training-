@@ -1,0 +1,15 @@
+<apex:page controller="WithSharingJobToJenny">
+  <!--  <apex:repeat value="{!lstJob}" var="jobs">
+    {!jobs.Name}
+    
+    
+    </apex:repeat>-->
+    
+    
+    
+<p>
+   This is Job Count {!intCount}
+</p>
+    
+    
+</apex:page>

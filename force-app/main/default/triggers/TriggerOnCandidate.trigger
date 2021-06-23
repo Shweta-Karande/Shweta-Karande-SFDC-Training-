@@ -1,5 +1,5 @@
 trigger TriggerOnCandidate on Candidate_Shweta__c (before insert,after insert, before update, after update) {
-    if(Trigger.isBefore){
+    if(Trigger.isBefore && (Trigger.isInsert || Trigger.isUpdate)){
         CandidateTriggerHandler.expectedSalary(Trigger.new);
     }
     if(Trigger.isBefore && (Trigger.isInsert || Trigger.isUpdate))
@@ -8,8 +8,14 @@ trigger TriggerOnCandidate on Candidate_Shweta__c (before insert,after insert, b
     }
     if(Trigger.isAfter && Trigger.isInsert)
     {
-        System.debug(Trigger.new);
+        //  System.debug(Trigger.new);
         CandidateTriggerHandler.applicationDate(Trigger.new);
     }
-
+    
+    /*    if(Trigger.isUpdate || Trigger.isInsert  )
+{
+CandidateTriggerHandler.sendEmailToHiredCandidateDetailPDF(Trigger.new);
+}*/
+    
+    
 }

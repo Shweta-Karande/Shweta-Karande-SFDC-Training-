@@ -1,0 +1,5 @@
+<apex:page controller="WithoutSharingJobToJenny" >
+<p>
+   This is Job Count {!intCount}
+</p>
+</apex:page>

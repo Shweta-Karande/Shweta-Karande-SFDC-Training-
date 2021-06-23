@@ -1,0 +1,61 @@
+<apex:page standardController="Candidate_Shweta__c" renderAs="pdf">
+    <apex:detail relatedList="false"/>
+<h1>Candidate Details Page</h1>  
+ <b><apex:outputText value=" {!Candidate_Shweta__c.APEX_FullName__c}"/></b>
+    <h2>Your details are:</h2>
+ <table>
+<tr><th> Candidate First Name:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_FirstName__c}"/></td>
+    </tr>
+	<tr>
+    <th>Candidate Last Name:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_LastName__c}"/></td>
+    </tr>
+ 	<tr>
+    <th>Candidate Full Name:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_FullName__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>Date of Birth:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_DateOFBirth__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>Application Date:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_ApplicationDate__c}"/></td>
+    </tr>
+     
+	<tr>
+    <th>Email:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_Email__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>Country:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.Country__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>State:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_State__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>Expected Salary:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_ExpectedSalary__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>Job_jobShweta:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_JOB_Shwetajob__c}"/></td>
+    </tr>
+     
+    <tr>
+    <th>Status:</th>
+    <td><apex:outputText value="{!Candidate_Shweta__c.APEX_Status__c}"/></td>
+    </tr>
+    
+</table>
+    
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page standardController="APEX_Job_Shweta__c" recordSetvar="jobs">
+  <apex:pageBlock title="Viewing jobs">
+   <apex:form id="theForm">
+            <apex:panelGrid columns="2">
+                <apex:outputLabel value="View:"/>
+                <apex:selectList value="{!filterId}" size="1">
+                    <apex:actionSupport event="onchange" rerender="list"/>
+                    <apex:selectOptions value="{!listviewoptions}"/>
+                </apex:selectList>
+            </apex:panelGrid>
+            <apex:pageBlockSection >
+                <apex:dataList var="job" value="{!jobs}" type="3">
+                    {!job.APEX_Name__c}
+                    {!job.APEX_Manager__c}
+                    {!job.APEX_NoOfPosition__c}
+                </apex:dataList>
+            </apex:pageBlockSection>
+            <apex:panelGrid columns="4">
+                <apex:commandLink action="{!first}">First</apex:commandLink>
+                <apex:commandLink action="{!previous}">Previous</apex:commandLink>
+                <apex:commandLink action="{!next}">Next</apex:commandLink>
+                <apex:commandLink action="{!last}">Last</apex:commandLink>
+            </apex:panelGrid>
+        </apex:form> 
+    </apex:pageBlock>
+</apex:page>

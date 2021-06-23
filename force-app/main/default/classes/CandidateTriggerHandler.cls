@@ -1,32 +1,27 @@
 public class CandidateTriggerHandler {
-    static dateTime tempAppDate{get;set;}
+    //static dateTime tempAppDate{get;set;}
     public static void expectedSalary(List<Candidate_Shweta__c> lstCandidates){
-        for(Candidate_Shweta__c candidateObj:lstCandidates)
+        for(Candidate_Shweta__c objCandidate:lstCandidates)
         {
-            if(candidateObj.APEX_ExpectedSalary__c==null || candidateObj.APEX_ExpectedSalary__c<=0){
-                candidateObj.addError('Expected Salary field is missing');
-            }
+            if(objCandidate.APEX_ExpectedSalary__c==null || objCandidate.APEX_ExpectedSalary__c<=0){
+                objCandidate.addError('Expected Salary field is missing');
+        }
         }
     }
     
-    public static void jobNotActiveNotApply(List<Candidate_Shweta__c> listCandidate)
+    public static void jobNotActiveNotApply(List<Candidate_Shweta__c> lstCandidates)
     {
-        Set<Id> jobId= new Set<Id>();
-        
-        for(Candidate_Shweta__c candidateObj : listCandidate)
+        Set<Id> jobIds= new Set<Id>();
+        for(Candidate_Shweta__c objCandidate : lstCandidates)
         {
-            if(candidateObj.APEX_JOB_Shwetajob__c!=null)
-            {
-                jobId.add(candidateObj.APEX_JOB_Shwetajob__c);
-            }
+          jobIds.add(objCandidate.APEX_JOB_Shwetajob__c);
         }
-        
-        Map<Id,APEX_Job_Shweta__c>  notActiveJob = new Map<Id,APEX_Job_Shweta__c>([SELECT Id,APEX_Active__c from APEX_Job_Shweta__c where Id In:
-                                                                                   jobid AND APEX_Active__c=false]);
-        
-        for(Candidate_Shweta__c objCandidate:listCandidate)
-        {
-            if(notActiveJob.get(objCandidate.APEX_JOB_Shwetajob__c)!=null){
+         Map<Id,APEX_Job_Shweta__c>  notActiveJob = new Map<Id,APEX_Job_Shweta__c>([SELECT Id,APEX_Active__c 
+                                                                                   FROM APEX_Job_Shweta__c
+                                                                                   WHERE Id IN: jobIds AND APEX_Active__c=false]);
+         for(Candidate_Shweta__c objCandidate:lstCandidates){
+            if(notActiveJob.get(objCandidate.APEX_JOB_Shwetajob__c)!=null)
+            {
                 objCandidate.addError('This job is not active. You can not apply for this job');
             }   
         }
@@ -34,24 +29,29 @@ public class CandidateTriggerHandler {
     
     
     
-    public static void applicationDate(List<Candidate_Shweta__c> candidateList)  {
-        List<Candidate_Shweta__c> candidateUpdateList=new List<Candidate_Shweta__c>();
+    public static void applicationDate(List<Candidate_Shweta__c> lstCandidate)  {
+        List<Candidate_Shweta__c> lstCandidateUpdated=new List<Candidate_Shweta__c>();
         
-        System.debug(candidateList);
-        for(Candidate_Shweta__c candidateObj:candidateList)
+        System.debug(lstCandidate);
+        
+        for(Candidate_Shweta__c objCandidate:lstCandidate)
         {
-            Candidate_Shweta__c candObj1=new Candidate_Shweta__c();
-            candObj1.Id=candidateObj.id;
-            candObj1.APEX_ApplicationDate__c=candidateObj.CreatedDate.Date();
-            candidateUpdateList.add(candObj1);
+            Candidate_Shweta__c objCand=new Candidate_Shweta__c();
+            objCand.Id=objCandidate.id;
+            objCand.APEX_ApplicationDate__c=objCandidate.CreatedDate.Date();
+            lstCandidateUpdated.add(objCand);
             
-            //candidateObj.APEX_ApplicationDate__c= ? null :tempAppDate.date();
+            //objCandidate.APEX_ApplicationDate__c= ? null :tempAppDate.date();
             // obj2.Date__c = (obj1.CreatedDate == null) ? null : obj1.CreatedDate.date();
         }
-        Update candidateUpdateList;
+        if (!lstCandidateUpdated.isEmpty() ){
+        Update lstCandidateUpdated;
+        }
         
         
     }
+    
+ 
     
     
 }
